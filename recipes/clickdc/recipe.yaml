@@ -1,0 +1,55 @@
+schema_version: 1
+
+context:
+  version: "0.1.1"
+
+package:
+  name: clickdc
+  version: ${{ version }}
+
+source:
+  url: https://pypi.org/packages/source/c/clickdc/clickdc-${{ version }}.tar.gz
+  sha256: 077f04d7ad00509b43aa8e37a9c7df307c00a73f7fef265235ef98ca54235b9b
+
+build:
+  number: 0
+  noarch: python
+  script: python -m pip install . -vv --no-deps --no-build-isolation
+
+requirements:
+  host:
+    - python ${{ python_min }}.*
+    - setuptools >=41
+    - setuptools-git-versioning <2
+    - wheel
+    - pip
+  run:
+    - python >=${{ python_min }}
+    - click
+    - typing_extensions
+
+tests:
+  - python:
+      imports:
+        - clickdc
+      python_version:
+        - ${{ python_min }}.*
+        - "*"
+      pip_check: true
+
+about:
+  homepage: https://github.com/Kamilcuk/clickdc
+  summary: Manage click arguments using python dataclass
+  description: |
+    clickdc declares click options, arguments, commands and groups as fields of
+    a Python dataclass. The field types drive the click parameter types, and a
+    single decorator passes the populated dataclass to the command function, so
+    the parser definition and the parsed values share one typed declaration.
+  license: MIT
+  license_file: LICENSE
+  repository: https://github.com/Kamilcuk/clickdc
+  documentation: https://github.com/Kamilcuk/clickdc
+
+extra:
+  recipe-maintainers:
+    - chrisburr
