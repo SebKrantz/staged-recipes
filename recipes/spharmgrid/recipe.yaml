@@ -2,7 +2,7 @@ schema_version: 1
 
 context:
   python_min: "3.12"
-  version: "0.1.0"
+  version: "0.1.1"
 
 package:
   name: spharmgrid
@@ -10,7 +10,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/s/spharmgrid/spharmgrid-${{ version }}.tar.gz
-  sha256: a16225d495b26d1774b5bedc6688b6a448cb73e69bbad22cb7d7ddef23b21c31
+  sha256: 89e98d4468f0bfe286efc4a63178147bf1390b06dd32ff84f2e90606454f2ca4
 
 build:
   number: 0
@@ -46,7 +46,7 @@ tests:
       - spharmgrid --help
 
 about:
-  summary: Spherical harmonic tools for filtering, regridding, and kinematics in atmospheric science with xarray
+  summary: Spherical harmonic tools for filtering, regridding, and kinematics in atmospheric science with Xarray
   description: |
     spharmgrid (spherical harmonic gridding) implements spherical harmonic
     filtering, regridding, differential operators, and atmospheric wind
