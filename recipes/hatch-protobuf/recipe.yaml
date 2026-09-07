@@ -1,0 +1,50 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/prefix-dev/recipe-format/main/schema.json
+schema_version: 1
+
+context:
+  version: "0.5.0"
+
+package:
+  name: hatch-protobuf
+  version: ${{ version }}
+
+source:
+  url: https://pypi.org/packages/source/h/hatch-protobuf/hatch_protobuf-${{ version }}.tar.gz
+  sha256: 9ffd784fd083eb5d37f6897e59c627238ec3349de52afb897ee161f7d1ca414e
+
+build:
+  number: 0
+  noarch: python
+  script: ${{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
+
+requirements:
+  host:
+    - python ${{ python_min }}.*
+    - pip
+    - hatchling
+    - hatch-vcs
+  run:
+    - python >=${{ python_min }}
+    - grpcio-tools >=1.49
+    - hatchling
+
+tests:
+  - python:
+      imports:
+        - hatch_protobuf
+      pip_check: true
+      python_version:
+        - ${{ python_min }}.*
+        - "*"
+
+about:
+  homepage: https://github.com/nanoporetech/hatch-protobuf
+  license: MPL-2.0
+  license_file: LICENSE.md
+  summary: A Hatch build plugin to generate Python files from Protocol Buffers .proto files
+  description: |
+    A Hatch build plugin to generate Python files from Protocol Buffers .proto files
+
+extra:
+  recipe-maintainers:
+    - rxm7706
