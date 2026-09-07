@@ -43,6 +43,8 @@ tests:
       python_version:
         - ${{ python_min }}.*
         - "*"
+  - script:
+      - domonic --help
 
 about:
   homepage: https://github.com/byteface/domonic
