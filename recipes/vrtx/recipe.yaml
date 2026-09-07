@@ -1,16 +1,15 @@
 schema_version: 1
 
 context:
-  name: vertex-cli
-  version: "1.0.1"
+  version: "1.1.1"
 
 package:
-  name: ${{ name }}
+  name: vrtx
   version: ${{ version }}
 
 source:
-  url: https://pypi.org/packages/source/v/vertex-cli/vertex_cli-${{ version }}.tar.gz
-  sha256: ed02c84ef59ec44e7593b5cacf50cc447364f84de67e76cf2d5a4845d8c37688
+  url: https://pypi.org/packages/source/v/vrtx/vrtx-${{ version }}.tar.gz
+  sha256: f917259cee6414420a62664233a750a92613b9b9628061b9f50b2aad064b2fe6
 
 build:
   noarch: python
@@ -18,8 +17,8 @@ build:
   script: ${{ PYTHON }} -m pip install . -vv
   python:
     entry_points:
-      - tex = cli.prompt:main
-      - tex-init = cli.utils:install_requirements
+      - vrtx = vrtx.prompt:main
+      - vrtx-init = vrtx.utils:install_requirements
 
 requirements:
   host:
@@ -35,33 +34,33 @@ requirements:
 tests:
   - python:
       imports:
-        - cli
-        - cli.models
+        - vrtx
+        - vrtx.models
       python_version:
         - ${{ python_min }}.*
         - "*"
       pip_check: true
   - script:
-      - tex
-      - tex list
+      - vrtx
+      - vrtx list
 
 about:
-  homepage: https://github.com/prathamhole14/Vertex-CLI
+  homepage: https://github.com/prathamhole14/vrtx
   summary: A unified CLI tool for interacting with multiple LLMs via LangChain
   description: |
-    Vertex CLI is a command line tool for talking to several large language
-    model providers through a single interface built on LangChain. Google
-    Gemini support is installed by default, and the OpenAI and Anthropic
-    providers can be enabled by installing langchain-openai or
-    langchain-anthropic alongside this package.
+    vrtx is a command line tool for talking to several large language model
+    providers through a single interface built on LangChain. Google Gemini
+    support is installed by default, and the OpenAI and Anthropic providers
+    can be enabled by installing langchain-openai or langchain-anthropic
+    alongside this package.
 
     It keeps conversation history between invocations, lets you register and
     switch between configured models, and can read recent shell history to
     explain commands that failed.
   license: MIT
   license_file: LICENSE
-  repository: https://github.com/prathamhole14/Vertex-CLI
-  documentation: https://prathamhole14.github.io/Vertex-CLI/
+  repository: https://github.com/prathamhole14/vrtx
+  documentation: https://prathamhole14.github.io/vrtx/
 
 extra:
   recipe-maintainers:
