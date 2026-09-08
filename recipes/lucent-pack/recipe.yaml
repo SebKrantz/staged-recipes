@@ -19,12 +19,12 @@ build:
 
 requirements:
   host:
-    - python
+    - python ${{ python_min }}.*
     - pip
     - hatchling
     - nodejs
   run:
-    - python
+    - python >=${{ python_min }}
     - empack
 
 tests:
