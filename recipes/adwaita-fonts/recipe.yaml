@@ -15,7 +15,6 @@ build:
   skip:
     - win
   number: 0
-  noarch: generic
   script:
     - mkdir -p $PREFIX/fonts
     - cp mono/*.ttf $PREFIX/fonts/
