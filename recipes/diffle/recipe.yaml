@@ -21,9 +21,11 @@ requirements:
     - pnpm-licenses
   run:
     - nodejs
-    - git
 
 tests:
+  - package_contents:
+      bin:
+        - diffle
   - script:
       - diffle --help
       - diffle working --help
