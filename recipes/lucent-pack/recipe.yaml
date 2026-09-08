@@ -31,6 +31,9 @@ tests:
   - script:
       - lucent --version
       - lucent --help
+    requirements:
+      run:
+        - python ${{ python_min }}.*
 
 about:
   homepage: https://github.com/IsabelParedes/lucent-pack
