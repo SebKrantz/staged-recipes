@@ -15,7 +15,7 @@ build:
   number: 0
   noarch: python
   script:
-    - ${{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation --disable-pip-version-check
+    - ${{ PYTHON }} -m pip install . -vv
   python:
     entry_points:
       - dynamic-metadata = dynamic_metadata.__main__:main
@@ -39,6 +39,9 @@ tests:
         - "*"
   - script:
       - dynamic-metadata --help
+    requirements:
+      run:
+        - python ${{ python_min }}.*
 
 about:
   homepage: https://github.com/scikit-build/dynamic-metadata
